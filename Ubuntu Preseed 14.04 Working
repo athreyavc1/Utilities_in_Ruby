@@ -1,0 +1,72 @@
+d-i debian-installer/locale string en_US
+d-i keyboard-configuration/layoutcode string us
+d-i keyboard-configuration/variantcode string
+d-i debian-installer/locale string en_US
+d-i time/zone select Europe/Amsterdam
+d-i clock-setup/utc boolean true
+d-i clock-setup/ntp boolean false
+d-i console-setup/ask_detect boolean false
+d-i console-setup/layoutcode string us
+d-i console-setup/ask_detect boolean false 
+d-i keyboard-configuration/layoutcode string us
+d-i netcfg/choose_interface select eth0
+d-i netcfg/get_hostname string homeubuntu1
+d-i netcfg/get_domain string homelab.com
+d-i partman-auto/disk string /dev/sda
+d-i partman-auto/method string lvm
+d-i partman-auto/choose_recipe select standard
+d-i partman-auto-lvm/new_vg_name string test_vg
+d-i partman-auto/expert_recipe string \
+    standard ::                       \
+      512 512 512 ext3                \
+        $primary{ }                   \
+        $bootable{ }                  \
+        method{ format }              \
+        format{ }                     \
+        use_filesystem{ }             \
+        filesystem{ ext3 }            \
+        mountpoint{ /boot }           \
+      .                               \
+      8096 8096 -1 ext4             \
+        $lvmok{ }                     \
+        method{ format }              \
+        format{ }                     \
+        use_filesystem{ }             \
+        filesystem{ ext4 }            \
+        mountpoint{ / }               \
+        lv_name{ root_lv }            \
+      .                               \
+      1024 512 3172 linux-swap        \
+        $lvmok{ }                     \
+        method{ swap }                \
+        format{ }                     \
+        lv_name{ swap_lv }            \
+      .
+d-i partman/confirm_write_new_label boolean true
+d-i partman/confirm_nooverwrite boolean true
+d-i partman/choose_partition select finish
+d-i partman/confirm boolean true
+d-i partman-lvm/confirm boolean true
+d-i partman-lvm/confirm_nooverwrite boolean true
+d-i partman-auto-lvm/guided_size string max
+d-i partman-partitioning/confirm_write_new_label boolean true
+d-i partman/choose_partition select Finish
+d-i partman/confirm_nooverwrite boolean true
+d-i partman/confirm boolean true
+d-i passwd/root-password password classic
+d-i passwd/root-password-again password classic
+d-i passwd/user-fullname string Administrator
+d-i passwd/username string user
+d-i passwd/user-password password classic
+d-i passwd/user-password-again password classic
+d-i user-setup/allow-password-weak boolean true
+d-i user-setup/encrypt-home boolean false
+d-i pkgsel/update-policy select none
+d-i pkgsel/include string openssh-server update-motd
+d-i mirror/http/proxy string
+tasksel tasksel/first multiselect basic-ubuntu-server
+d-i clock-setup/utc boolean true
+d-i grub-installer/only_debian boolean true
+d-i grub-installer/timeout string 2
+d-i finish-install/keep-consoles boolean true
+d-i finish-install/reboot_in_progress note
