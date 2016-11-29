@@ -1,5 +1,6 @@
 require 'sinatra'
 
 get '/hello' do 
- 'Hello Sinatra'
+ name = "Andy"
+ "Hello #{name}"
 end
