@@ -14,6 +14,9 @@ __END__
 <body>
 <header>
   <h1>WARS Humanity Fought</h1>
+  <section>
+    <p> Welcome to the site </p>
+  </section>
   <nav>
     <ul>
       <li><a href="/" title="Home">Home</a></li>
@@ -21,8 +24,5 @@ __END__
       <li><a href="/contact" title="Contact">Contact</a></li>
     </ul>
 </header>
-<section>
-  <p> Welcome to the site </p>
-</section>
 </body>
 </html>
