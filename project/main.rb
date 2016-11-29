@@ -3,6 +3,11 @@ require 'sinatra'
 get '/' do
  erb :home
 end
+
+get '/about' do
+  erb :about
+end
+
 __END__
 @@home
 <!doctype html>
@@ -25,4 +30,10 @@ __END__
     </ul>
 </header>
 </body>
+</html>
+@@about
+<html lang="en">
+ <body>
+    <h1>Soon to be created</h1>
+  </body>
 </html>
